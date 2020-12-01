@@ -1,0 +1,231 @@
+I"8<section>
+    <hr />
+    <hr />
+    <p> </p>
+    <h3>
+        Selective Harmonic Elimination via Feedback Optimal Control
+    </h3>
+        <hr />
+    <hr />
+    <h5>Jesús Oroya - Dic 2020</h5>
+</section>
+
+<!-- --------------------- -->
+<section>
+
+<section>
+<p style="padding-top:200px"></p>
+</section>
+
+<hr />
+<h4> 1. Definición del problema</h4>
+<hr />
+
+<section>
+
+<p>Consideraremos una función escalón:</p>
+
+$$ \{ f(\tau) \ | \ \tau \in [0,2\pi]\} \  \text{ y } \ f(\tau) \in \{-1,1\}$$
+Con simetría de media onda:
+$$ f(\tau) = -f(\tau+\pi) $$
+</section>
+<!-- --------------------- -->
+<section>
+
+<p>Cuyos coeficientes de Fourier se pueden escribir como:</p>
+
+$$ 
+a_i = \frac{2}{\pi} \int_0^\pi f(\tau ) \cos(i \tau)d\tau \ | \ \forall i \ odd 
+$$
+
+$$
+b_j = \frac{2}{\pi} \int_0^\pi f(\tau)  \sin(j \tau) d\tau \ | \ \forall j \ odd 
+$$
+</section>
+<!-- --------------------- -->
+<section>
+
+
+<p>Consideramos dos conjuntos de números impares \( \mathcal{E}_a \) y \( \mathcal{E}_b\) con cardinalidades \(|\mathcal{E}_a| = N_a \) y  \(|\mathcal{E}_b| = N_b\)</p>
+<p>Consideramos los vectores objetivo \({a}_T  \in \mathbb{R}^{N_a}\) y \({b}_T  \in \mathbb{R}^{N_b}\)</p>
+<p> Buscamos una función  \( f(\tau ) \)  cuyos coeficientes de Fourier satisfagan: </p>
+
+$$
+a_i = ({a}_T)_i \ | \  \forall i \in \mathcal{E}_a 
+$$
+
+$$
+b_j = ({b}_T)_j \ | \  \forall \ j \in \mathcal{E}_b
+$$
+
+</section>
+<!-- --------------------- -->
+</section>
+
+<!-- --------------------- -->
+<section>
+
+<section>
+<p style="padding-top:200px"></p>
+</section>
+
+
+<hr />
+<h4> 2. SHE como un sistema dinámico</h4>
+<hr />
+
+<!--  -->
+<section>
+
+<p>Podemos re-escribir los coeficientes como:</p>
+
+$$ 
+\alpha_i(\tau) = \frac{2}{\pi}\int_0^\tau f(\tau) \cos(i\tau)d\tau 
+\Rightarrow
+\begin{cases} 
+    \dot{\alpha_i}(\tau) &amp; = \frac{2}{\pi}f(\tau)\cos(i\tau) \\  
+    \alpha_i(0) &amp; = 0       
+\end{cases}
+$$
+
+$$
+\beta_j(\tau) = \frac{2}{\pi}\int_0^\tau f(\tau) \sin(j\tau)d\tau 
+\Rightarrow
+\begin{cases} 
+    \dot{\beta}_j(\tau) &amp; = \frac{2}{\pi}f(\tau)\sin(j\tau) \\  
+    \beta_j(0) &amp; = 0       
+\end{cases}
+$$
+
+<p>
+Entonces \(\alpha_i(\pi)\) y \(\beta_j(\pi)\) corresponden a los coeficientes de Fourier \(a_i\) y \(b_j\) respectivamente.
+</p>
+
+</section>
+
+<!-- --------------------- -->
+
+<section>
+<p>Tomamos como ejemplo \( \mathcal{E}_a = \{1\} \) y \( \mathcal{E}_b = \{1\} \). Esto nos da el siguiente sistema dinámico:</p>
+
+$$
+\begin{cases}
+    \alpha_1 = (2/\pi) \cos(\tau) &amp; \alpha_1(0) = 0 \\
+    \beta_1  = (2/\pi) \sin(\tau)  &amp; \beta_1(0) = 0
+\end{cases}
+$$
+
+<p>
+Veamos como se comporta esta dinámica con un control \(f(\tau)\) dado.
+</p>
+</section>
+
+<!-- --------------------- -->
+
+<section>
+<p>Evolución del sistema dinámico:</p>
+<video controls="" width="80%" src="https://djoroya.github.io/SHE-ControlTheory-slides/videos/peaks.mp4"></video>
+</section>
+
+ <!-- --------------------- -->
+
+ <section>
+ 
+<p> Cambio de variable \(\alpha'(\tau) = a_T - \alpha(\tau)\) y  \(\beta'(\tau) = b_T - \beta(\tau)\)</p>
+
+$$ 
+\begin{cases} 
+    \dot{\alpha_i'}(\tau) &amp; = -\frac{2}{\pi}f(\tau)\cos(i\tau) \\  
+    \alpha_i'(0) &amp; = \textcolor{red}{a_T^i}      
+\end{cases}
+$$
+
+$$
+
+\begin{cases} 
+    \dot{\beta_j'}(\tau) &amp; = -\frac{2}{\pi}f(\tau)\sin(j\tau) \\  
+    \beta_j'(0) &amp; = \textcolor{red}{b_T^i}        
+\end{cases}
+$$
+
+<p>Si el sistema termina en \(\alpha_i'(\pi) = 0\) y \(\beta_j'(\pi) = 0\) entonces las condiciones iniciales \(\textcolor{red}{a_T^i}\) y \(\textcolor{red}{b_T^j}\) son los coefientes de Fourier de \(f(\tau)\)
+</p>
+</section> 
+
+<!--  -->
+
+<section>
+<p>Evolución del sistema dinámico inverso</p>
+<video src="https://djoroya.github.io/SHE-ControlTheory-slides/videos/peaks-rev.mp4" controls="" width="80%">
+</video>
+</section>
+
+</section>
+
+<!--  -->
+
+<section>
+
+<section>
+<p style="padding-top:200px"></p>
+</section>
+
+<h4>2. Optimal Control</h4>
+<hr />
+
+
+<section>
+<p>El problema de control se puede escribir como:</p>
+
+$$
+    \min_{|f(\tau) |&lt;1} \Big(\|{\alpha}(\pi)\|^2 + \|  {\beta}(\pi)\|^2 \Big)
+ $$
+sujeto a:
+
+ $$
+     \forall i \in \mathcal{E}_a\ \ 
+    \begin{cases}
+        \dot{\alpha}_i(\tau) = -(2/\pi) \cos(i\tau) f(\tau) &amp; \tau \in [0,\pi]\\
+        \alpha_i(0) = a_T^i
+    \end{cases} 
+$$
+
+$$
+     \forall j \in \mathcal{E}_b\ \ 
+    \begin{cases}
+        \dot{\beta}_j(\tau) = -(2/\pi) \sin(j\tau) f(\tau) &amp; \tau \in [0,\pi]\\
+        \beta_j(0) =  b_T^i
+    \end{cases} \\
+$$
+</section>
+
+<!--  -->
+<section>
+
+<p>Para resolverlo numéricamente necesitamos tomar una discretización del intervalo \([0,\pi]\), es decir:</p>
+
+$$
+    \tau \in [0,\pi] \rightarrow {\{t_0,t_1,t_2, \dots,t_{K}\}}
+$$
+$$
+    t_0 = 0 \ | \ t_K = \pi
+$$
+
+<p>Tomaremos esta discretización equiespaciada en el tiempo.</p>
+</section>
+
+
+<!--  -->
+
+<section>
+    
+<p>De esta manera podemos referirnos a las funciones \(f(\tau)\), \(\alpha(\tau)\) y \(\beta(\tau)\) como vectores:</p>
+
+$$ f(\tau) \in [0,\pi] \rightarrow \vec{f} \in \mathbb{R}^K $$
+$$ \alpha_i(\tau) \in [0,\pi] \rightarrow \vec{\alpha}_i \in \mathbb{R}^K $$
+$$ \beta_j(\tau) \in [0,\pi] \rightarrow \vec{\beta}_j \in \mathbb{R}^K $$
+
+</section> 
+
+</section>
+:ET
