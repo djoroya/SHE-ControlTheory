@@ -1,4 +1,4 @@
-I"8<section>
+I":<section>
     <hr />
     <hr />
     <p> </p>
@@ -124,7 +124,7 @@ Veamos como se comporta esta dinámica con un control \(f(\tau)\) dado.
 
 <section>
 <p>Evolución del sistema dinámico:</p>
-<video controls="" width="80%" src="https://djoroya.github.io/SHE-ControlTheory-slides/videos/peaks.mp4"></video>
+<video controls="" width="80%" src="https://djoroya.github.io//SHE-ControlTheory-slides/videos/peaks.mp4"></video>
 </section>
 
  <!-- --------------------- -->
@@ -156,7 +156,7 @@ $$
 
 <section>
 <p>Evolución del sistema dinámico inverso</p>
-<video src="https://djoroya.github.io/SHE-ControlTheory-slides/videos/peaks-rev.mp4" controls="" width="80%">
+<video src="https://djoroya.github.io//SHE-ControlTheory-slides/videos/peaks-rev.mp4" controls="" width="80%">
 </video>
 </section>
 
