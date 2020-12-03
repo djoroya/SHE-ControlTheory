@@ -11,7 +11,7 @@ layout: index
     </h3>
         <hr>
     <hr>
-    <h5>Jesús Oroya - Dic 2020</h5>
+    <h4>Jesús Oroya - Dic 2020</h4>
 </section>
 
 {% include s01.md %}
