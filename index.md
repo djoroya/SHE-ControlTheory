@@ -17,3 +17,7 @@ layout: index
 {% include s01.md %}
 {% include s02.md %} 
 {% include s03.md %}  
+{% include s04.md %}  
+{% include s05.md %}  
+{% include s06.md %}  
+{% include s07.md %}  
