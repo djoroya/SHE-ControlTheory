@@ -14,10 +14,10 @@ layout: index
     <h4>Jesús Oroya - Dic 2020</h4>
 </section>
 
-{% include s01.md %}
-{% include s02.md %} 
-{% include s03.md %}  
-{% include s04.md %}  
-{% include s05.md %}  
-{% include s06.md %}  
-{% include s07.md %}  
+{% include contents/s01.md %}
+{% include contents/s02.md %} 
+{% include contents/s03.md %}  
+{% include contents/s04.md %}  
+{% include contents/s05.md %}  
+{% include contents/s06.md %}  
+{% include contents/s07.md %}  
